@@ -103,6 +103,10 @@ const Products = () => {
     sortProducts();
   }, [sortBy]);
 
+  useEffect(() => {
+    filterProducts && filterProducts?.length <= itemPerPage && setPage(1);
+  }, [filterProducts]);
+
   if (isLoading) return <div>Loading products...</div>;
   if (error) return <div>Error loading products</div>;
 
