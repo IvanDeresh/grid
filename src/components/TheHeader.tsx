@@ -22,6 +22,8 @@ const TheHeader = () => {
   const [isActive, setIsActive] = useState(false);
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState<Product[]>([]);
+  const [language, setLanguage] = useState("English");
+  const [currency, setCurrency] = useState("USD");
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   useEffect(() => {
     if (!query) {
@@ -72,14 +74,32 @@ const TheHeader = () => {
           </div>
         </div>
 
-        <ul className="flex text-white text-[15px] leading-5 gap-[32px]">
-          <li className="flex gap-[4px] items-start">
-            <div className="">English</div>
-            <img src={arrowBottom} alt="arrow" />
+        <ul className="flex text-white text-[15px] items-center leading-5 gap-[32px]">
+          <li className="flex items-center space-x-2 gap-[4px]">
+            <select
+              id="language"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="flex items-center justify-centerpy-2 bg-tertiary focus:ourline-none outline-none text-white border-none rounded-md"
+            >
+              <option value={"English"}>English</option>
+              <option value={"French"}>French</option>
+              <option value={"Italian"}>Italian</option>
+            </select>
           </li>
-          <li className="flex gap-[4px] items-start">
-            <div className="">USD</div>
-            <img src={arrowBottom} alt="arrow" />
+
+          <li className="flex justify-center items-start">
+            <select
+              id="language"
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="flex items-center justify-center  py-2 bg-tertiary focus:ourline-none outline-none text-white border-none rounded-md"
+            >
+              <option value={"USD"}>USD</option>
+              <option value={"UAH"}>UAH</option>
+              <option value={"PLN"}>PLN</option>
+              <option value={"TRY"}>TRY</option>
+            </select>
           </li>
           <li>
             <Link to="/login" className="flex gap-[4px] items-start">

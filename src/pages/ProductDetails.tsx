@@ -42,7 +42,7 @@ const ProductDetails = () => {
             </div>
             <div className="flex items-center mt-[24px] gap-[15px]">
               <div className="text-[16px] leading-5 text-blue-dark font-josefin font-normal items-center">
-                {obj?.price}
+                ${obj?.price}
               </div>
               <div className="text-primary text-[14px] leading-4 line-through font-josefin font-normal">
                 ${obj?.oldPrice}
