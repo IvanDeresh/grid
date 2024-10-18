@@ -140,7 +140,7 @@ const Products = () => {
           <div
             className={`${
               isActive && "max-[1150px]: hidden"
-            }  flex flex-col max-[1150px]:items-start max-[1150px]:gap-[64px] max-[1150px]:flex-wrap max-[1150px]:px-[32px] max-[1150px]:mb-[100px]`}
+            } min-[1150px]:flex  flex flex-col max-[1150px]:items-start max-[1150px]:gap-[64px] max-[1150px]:flex-wrap max-[1150px]:px-[32px] max-[1150px]:mb-[100px]`}
           >
             <div>
               <h3 className="text-[20px] max-[1150px]:mt-0 mt-[64px] mb-[23px] leading-6 decoration-1 underline underline-offset-[8px] text-blue-dark font-bold font-justify ">
