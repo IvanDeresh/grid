@@ -14,22 +14,7 @@ const Leatest = () => {
   const [items, setItems] = useState<Product[]>([]);
   const [addedProduct, setAddedProduct] = useState("");
   const [wishProd, setWishProd] = useState("");
-  useEffect(() => {
-    if (addedProduct) {
-      const timer = setTimeout(() => {
-        setAddedProduct("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [addedProduct]);
-  useEffect(() => {
-    if (wishProd) {
-      const timer = setTimeout(() => {
-        setWishProd("");
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [wishProd]);
+
   useEffect(() => {
     switch (categorie) {
       case "New Arrival":
@@ -53,6 +38,22 @@ const Leatest = () => {
         break;
     }
   }, [categorie]);
+  useEffect(() => {
+    if (addedProduct) {
+      const timer = setTimeout(() => {
+        setAddedProduct("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [addedProduct]);
+  useEffect(() => {
+    if (wishProd) {
+      const timer = setTimeout(() => {
+        setWishProd("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [wishProd]);
   if (isLoading)
     return (
       <div>
