@@ -8,7 +8,7 @@ import { Product } from "../types";
 const Leatest = () => {
   const [productName, setProductName] = useState("");
   const { products, isLoading, error } = useProducts();
-  const [categorie, setCategorie] = useState("New Arrival");
+  const [categorie, setCategorie] = useState("Best Seller");
   const { addToCart } = useCard();
   const { addToWishlist } = useWishlist();
   const [items, setItems] = useState<Product[]>([]);
