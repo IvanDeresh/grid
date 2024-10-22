@@ -12,7 +12,7 @@ const WishList = () => {
   );
 
   return (
-    <div className="mt-[102px]">
+    <div className="mt-[250px]">
       {wishlist.length !== 0 ? (
         <div className="flex max-xl:flex-col max-xl:items-center justify-center gap-[145px] my-[104px]">
           <div className="w-auto max-w-[640px]">
@@ -31,9 +31,12 @@ const WishList = () => {
 
                 <div className="flex max-sm:flex-col max-sm:items-center max-sm:gap-[32px]  justify-between w-[70%]">
                   <div className="flex flex-col justify-between max-sm:gap-[16px] max-sm:items-center">
-                    <h2 className="font-bold text-blue-dark text-[22px] leading-7">
+                    <Link
+                      to={`/products/${product.id}`}
+                      className="font-bold text-blue-dark text-[22px] leading-7"
+                    >
                       {product.name}
-                    </h2>
+                    </Link>
                     <p className="text-blue-dark text-[16px] font-normal font-josefin leading-5">
                       ${product.price.toFixed(2)}
                     </p>

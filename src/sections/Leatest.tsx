@@ -12,6 +12,24 @@ const Leatest = () => {
   const { addToCart } = useCard();
   const { addToWishlist } = useWishlist();
   const [items, setItems] = useState<Product[]>([]);
+  const [addedProduct, setAddedProduct] = useState("");
+  const [wishProd, setWishProd] = useState("");
+  useEffect(() => {
+    if (addedProduct) {
+      const timer = setTimeout(() => {
+        setAddedProduct("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [addedProduct]);
+  useEffect(() => {
+    if (wishProd) {
+      const timer = setTimeout(() => {
+        setWishProd("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [wishProd]);
   useEffect(() => {
     switch (categorie) {
       case "New Arrival":
@@ -105,6 +123,16 @@ const Leatest = () => {
                 className="absolute left-[-8px] top-[0px]"
               />
             )}
+            {addedProduct === accessorie.name && (
+              <div className="bg-primary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute bottom-[50px] left-[30%] animate-fromTop text-white">
+                {addedProduct} was added to the card
+              </div>
+            )}
+            {wishProd === accessorie.name && (
+              <div className="bg-tertiary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute bottom-[50px] left-[30%] animate-fromTop text-white">
+                {wishProd} was added to the wishlist
+              </div>
+            )}
             <div className="absolute bottom-[40px] left-[8px]">
               <ul
                 className={`animate-fromTop transition-all ${
@@ -115,14 +143,22 @@ const Leatest = () => {
               >
                 <li
                   className="cursor-pointer hover:bg-gray-2 w-[16px] h-[16px] hover:scale-125 rounded-full"
-                  onClick={() => addToCart(accessorie)}
+                  onClick={() => {
+                    addToCart(accessorie);
+                    setAddedProduct(accessorie.name);
+                    setWishProd("");
+                  }}
                 >
                   <img src={cardProd} alt="card" />
                 </li>
 
                 <li
                   className="cursor-pointer hover:bg-gray-2 w-[16px] h-[16px] hover:scale-125 rounded-full"
-                  onClick={() => addToWishlist(accessorie)}
+                  onClick={() => {
+                    addToWishlist(accessorie);
+                    setAddedProduct("");
+                    setWishProd(accessorie.name);
+                  }}
                 >
                   <img src={heartProd} alt="heart" />
                 </li>

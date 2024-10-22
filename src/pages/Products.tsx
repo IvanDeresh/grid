@@ -34,6 +34,24 @@ const Products = () => {
     (page - 1) * itemPerPage,
     page * itemPerPage
   );
+  const [addedProduct, setAddedProduct] = useState("");
+  const [wishProd, setWishProd] = useState("");
+  useEffect(() => {
+    if (addedProduct) {
+      const timer = setTimeout(() => {
+        setAddedProduct("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [addedProduct]);
+  useEffect(() => {
+    if (wishProd) {
+      const timer = setTimeout(() => {
+        setWishProd("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [wishProd]);
   useEffect(() => {
     const filterProducts = () => {
       const filtered = products;
@@ -111,7 +129,7 @@ const Products = () => {
   if (error) return <div>Error loading products</div>;
 
   return (
-    <div className="max-container flex flex-col items-center mb-[100px] mt-[102px]">
+    <div className="max-container flex flex-col mt-[250px] items-center mb-[100px]">
       <h2 className="text-blue-dark  ledaing-[52px] mb-[24px] text-[44px] font-bold font-josefin">
         Products
       </h2>
@@ -688,7 +706,7 @@ const Products = () => {
             >
               {paginatedProducts?.map((product) => (
                 <li
-                  className={`shadow-xl hover:shadow-2xl ${
+                  className={`shadow-xl relative hover:shadow-2xl ${
                     listView === "Standart"
                       ? "flex p-[16px] h-[232px] gap-[32px] max-w-[976px]"
                       : "p-[8px] max-w-[304px] flex flex-col"
@@ -702,6 +720,16 @@ const Products = () => {
                       alt={product.name}
                     />
                   </div>
+                  {addedProduct === product.name && (
+                    <div className="bg-primary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute  bottom-[5px] right-[5px] animate-fromTop text-white">
+                      {addedProduct} was added to the card
+                    </div>
+                  )}
+                  {wishProd === product.name && (
+                    <div className="bg-tertiary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute bottom-[5px] right-[5px] animate-fromTop text-white">
+                      {wishProd} was added to the wishlist
+                    </div>
+                  )}
                   <div
                     className={`${
                       listView === "Standart"
@@ -758,14 +786,22 @@ const Products = () => {
                     <ul className="flex gap-[24px]">
                       <li
                         className="cursor-pointer"
-                        onClick={() => addToCart(product)}
+                        onClick={() => {
+                          addToCart(product);
+                          setAddedProduct(product.name);
+                          setWishProd("");
+                        }}
                       >
                         <img src={cardProd} alt="card" />
                       </li>
 
                       <li
                         className="cursor-pointer"
-                        onClick={() => addToWishlist(product)}
+                        onClick={() => {
+                          addToWishlist(product);
+                          setAddedProduct("");
+                          setWishProd(product.name);
+                        }}
                       >
                         <img src={heartProd} alt="heart" />
                       </li>

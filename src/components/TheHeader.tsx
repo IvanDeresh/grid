@@ -61,15 +61,15 @@ const TheHeader = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <div className="max-container font-josefin w-full fixed z-50 bg-white">
+    <div className="max-container font-josefin w-full fixed z-50 top-0 bg-white">
       <div className="bg-tertiary max-md:hidden w-full py-[14px] flex justify-around">
         <div className="flex gap-[48px] w-[370px]">
-          <div className="text-white cursor-pointer text-[16px] leading-5 flex gap-[10px]">
-            <img src={mail} alt="mail" />
+          <div className="text-white cursor-pointer text-[16px] items-center leading-5 flex gap-[10px]">
+            <img src={mail} alt="mail" className="w-[16px]" />
             mhhasanul@gmail.com
           </div>
-          <div className="text-white cursor-pointer text-[16px] leading-5 flex gap-[10px]">
-            <img src={phone} alt="phone" />
+          <div className="text-white cursor-pointer text-[16px]  items-center leading-5 flex gap-[10px]">
+            <img src={phone} alt="phone" className="w-[16px]" />
             (12345)67890
           </div>
         </div>

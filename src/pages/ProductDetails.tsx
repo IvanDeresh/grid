@@ -16,7 +16,7 @@ const ProductDetails = () => {
   const { addToWishlist } = useWishlist();
   if (isLoading) return <div>Loading products...</div>;
   return (
-    <div className="max-container mt-[102px]">
+    <div className="max-container mt-[250px]">
       <section className="my-[100px]">
         <div className="flex justify-evenly max-xl:flex-col max-xl:gap-[64px] items-center">
           <div className="flex gap-[32px] max-xl:flex-col-reverse">

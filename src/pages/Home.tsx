@@ -10,7 +10,7 @@ import Unique from "../sections/Unique";
 
 const Home = () => {
   return (
-    <div className="w-full max-container mt-[102px]">
+    <div className="w-full max-container mt-[160px]">
       <Hero />
       <Feature />
       <Leatest />

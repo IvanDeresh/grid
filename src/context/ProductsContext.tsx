@@ -34,9 +34,6 @@ export const ProductsProvider = ({
     queryFn: fetchProducts,
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading data</div>;
-
   return (
     <ProductsContext.Provider value={{ products, isLoading, error }}>
       {children}

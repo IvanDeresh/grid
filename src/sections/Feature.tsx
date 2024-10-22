@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import Button from "../components/Button";
 import { cardProd, heartProd, loopProd } from "../assets/img";
@@ -8,9 +8,27 @@ import { Link } from "react-router-dom";
 
 const Feature = () => {
   const [productName, setProductName] = useState("");
+  const [addedProduct, setAddedProduct] = useState("");
+  const [wishProd, setWishProd] = useState("");
   const { products, isLoading, error } = useProducts();
   const { addToCart } = useCard();
   const { addToWishlist } = useWishlist();
+  useEffect(() => {
+    if (addedProduct) {
+      const timer = setTimeout(() => {
+        setAddedProduct("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [addedProduct]);
+  useEffect(() => {
+    if (wishProd) {
+      const timer = setTimeout(() => {
+        setWishProd("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [wishProd]);
   if (isLoading)
     return (
       <section className="flex justify-center items-center pt-[100px] gap-[72px] flex-col max-container">
@@ -44,6 +62,16 @@ const Feature = () => {
                 src={product.img}
                 alt={product.name}
               />
+              {addedProduct === product.name && (
+                <div className="bg-primary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[20%] animate-fromTop text-white">
+                  {addedProduct} was added to the card
+                </div>
+              )}
+              {wishProd === product.name && (
+                <div className="bg-tertiary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[20%] animate-fromTop text-white">
+                  {wishProd} was added to the wishlist
+                </div>
+              )}
               <div className="absolute top-[8px] left-[8px]">
                 <ul
                   className={`animate-fromTop transition-all ${
@@ -52,14 +80,22 @@ const Feature = () => {
                 >
                   <li
                     className="cursor-pointer hover:bg-gray-2 w-[16px] h-[16px] hover:scale-125 rounded-full"
-                    onClick={() => addToCart(product)}
+                    onClick={() => {
+                      setAddedProduct(product.name);
+                      setWishProd("");
+                      addToCart(product);
+                    }}
                   >
                     <img src={cardProd} alt="card" />
                   </li>
 
                   <li
                     className="cursor-pointer hover:bg-gray-2 w-[16px] h-[16px] hover:scale-125 rounded-full"
-                    onClick={() => addToWishlist(product)}
+                    onClick={() => {
+                      setWishProd(product.name);
+                      setAddedProduct("");
+                      addToWishlist(product);
+                    }}
                   >
                     <img src={heartProd} alt="heart" />
                   </li>
