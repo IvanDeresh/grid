@@ -8,11 +8,12 @@ import { Link } from "react-router-dom";
 
 const Feature = () => {
   const [productName, setProductName] = useState("");
-  const [addedProduct, setAddedProduct] = useState("");
-  const [wishProd, setWishProd] = useState("");
+
   const { products, isLoading, error } = useProducts();
   const { addToCart } = useCard();
   const { addToWishlist } = useWishlist();
+  const [addedProduct, setAddedProduct] = useState("");
+  const [wishProd, setWishProd] = useState("");
   useEffect(() => {
     if (addedProduct) {
       const timer = setTimeout(() => {
@@ -63,12 +64,12 @@ const Feature = () => {
                 alt={product.name}
               />
               {addedProduct === product.name && (
-                <div className="bg-primary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[20%] animate-fromTop text-white">
+                <div className="bg-primary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[25%] animate-fromTop text-white">
                   {addedProduct} was added to the card
                 </div>
               )}
               {wishProd === product.name && (
-                <div className="bg-tertiary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[20%] animate-fromTop text-white">
+                <div className="bg-tertiary w-[150px] h-[52px] rounded-lg text-[14px] p-[8px] absolute top-[50px] left-[25%] animate-fromTop text-white">
                   {wishProd} was added to the wishlist
                 </div>
               )}
