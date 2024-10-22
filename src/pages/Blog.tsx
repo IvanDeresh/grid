@@ -2,7 +2,7 @@ import Apartments from "../sections/Apartments";
 
 const Blog = () => {
   return (
-    <div>
+    <div className="mt-[102px]">
       <Apartments />
     </div>
   );

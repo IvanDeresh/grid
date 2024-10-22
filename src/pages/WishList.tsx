@@ -12,7 +12,7 @@ const WishList = () => {
   );
 
   return (
-    <div className="">
+    <div className="mt-[102px]">
       {wishlist.length !== 0 ? (
         <div className="flex max-xl:flex-col max-xl:items-center justify-center gap-[145px] my-[104px]">
           <div className="w-auto max-w-[640px]">

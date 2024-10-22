@@ -111,7 +111,7 @@ const Products = () => {
   if (error) return <div>Error loading products</div>;
 
   return (
-    <div className="max-container flex flex-col items-center mb-[100px]">
+    <div className="max-container flex flex-col items-center mb-[100px] mt-[102px]">
       <h2 className="text-blue-dark  ledaing-[52px] mb-[24px] text-[44px] font-bold font-josefin">
         Products
       </h2>
