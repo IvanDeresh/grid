@@ -37,7 +37,7 @@ const Leatest = () => {
         setItems(products || []);
         break;
     }
-  }, [categorie]);
+  }, [categorie, products]);
   useEffect(() => {
     if (addedProduct) {
       const timer = setTimeout(() => {
