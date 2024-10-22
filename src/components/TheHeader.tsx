@@ -61,7 +61,7 @@ const TheHeader = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
-    <div className="max-container font-josefin w-full">
+    <div className="max-container font-josefin w-full fixed z-50 bg-white">
       <div className="bg-tertiary max-md:hidden w-full py-[14px] flex justify-around">
         <div className="flex gap-[48px] w-[370px]">
           <div className="text-white cursor-pointer text-[16px] leading-5 flex gap-[10px]">
