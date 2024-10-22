@@ -12,5 +12,6 @@ export type Product = {
   category: string;
   discount: string;
   quantity: number;
+  isBestSeller: boolean;
 };
 export type Products = Product[];
